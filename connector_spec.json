@@ -2,5 +2,6 @@
   "USERNAME":   "Redis Username",
   "PASSWORD":   "Redis Password",
   "DATABASE":   "Redis Database",
-  "REDIS_HOST": "Redis Host"
+  "REDIS_HOST": "Redis Host",
+  "REDIS_PORT": "Redis Port"
 }
