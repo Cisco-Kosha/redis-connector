@@ -1,0 +1,427 @@
+basePath: /
+definitions:
+  models.Hash:
+    properties:
+      value:
+        items:
+          type: string
+        type: array
+    type: object
+  models.KV:
+    properties:
+      expiry:
+        type: integer
+      value:
+        type: string
+    type: object
+  models.List:
+    properties:
+      value:
+        items:
+          type: string
+        type: array
+    type: object
+  models.Set:
+    properties:
+      value:
+        items:
+          type: string
+        type: array
+    type: object
+  models.Specification:
+    properties:
+      database:
+        type: string
+      password:
+        type: string
+      redis_host:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8012
+info:
+  contact:
+    email: eti@cisco.io
+    name: API Support
+  description: This is a Kosha REST serice for exposing many redis features as REST
+    APIs with better consistency, observability etc
+  termsOfService: http://swagger.io/terms/
+  title: Redis Connector API
+  version: "2.0"
+paths:
+  /api/v1/hash/{key}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove members from a hash
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Remove memebers from a hash
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.Hash'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Remove members from a hash key in redis
+      tags:
+      - KV
+    get:
+      consumes:
+      - application/json
+      description: Get Hash Elements
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Key Prefix
+        in: query
+        name: prefix
+        type: string
+      - description: Count
+        in: query
+        name: count
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get all hash elements in redis with an optional prefix
+      tags:
+      - Hash
+    post:
+      consumes:
+      - application/json
+      description: Add members to a hash
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Add memebers to a hash
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.Hash'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Add members to a hash key in redis
+      tags:
+      - KV
+  /api/v1/keys:
+    get:
+      consumes:
+      - application/json
+      description: List all keys
+      parameters:
+      - description: Key Prefix
+        in: query
+        name: prefix
+        type: string
+      - description: Count
+        in: query
+        name: count
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get all keys in redis with an optional prefix
+      tags:
+      - KV
+  /api/v1/kv/{key}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove key value
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Remove a key in redis
+      tags:
+      - KV
+    get:
+      consumes:
+      - application/json
+      description: Get key
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get single key in redis
+      tags:
+      - KV
+    post:
+      consumes:
+      - application/json
+      description: Set key value
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Enter value for a key
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.KV'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Set value for a key in redis
+      tags:
+      - KV
+  /api/v1/list/{key}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove members from a list
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Count
+        in: query
+        name: count
+        type: integer
+      - description: Remove memebers from a list
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.List'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Remove members from a list key in redis
+      tags:
+      - List
+    get:
+      consumes:
+      - application/json
+      description: Get List elements
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get all list elements in redis with an optional prefix
+      tags:
+      - List
+    post:
+      consumes:
+      - application/json
+      description: Add members for a list
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Add memebers to a list
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.List'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Add members for a list key in redis
+      tags:
+      - List
+  /api/v1/ping:
+    get:
+      consumes:
+      - application/json
+      description: Check connectivity of a redis server
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+      summary: Ping redis server
+      tags:
+      - Connectivity
+  /api/v1/set/{key}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove members from a set
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Remove memebers from a set
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.Set'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Remove members from a set key in redis
+      tags:
+      - KV
+    get:
+      consumes:
+      - application/json
+      description: Get Set elements
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Key Prefix
+        in: query
+        name: prefix
+        type: string
+      - description: Count
+        in: query
+        name: count
+        type: integer
+      - description: Sort Keys
+        in: query
+        name: sort
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get all set elements in redis with an optional prefix
+      tags:
+      - Set
+    post:
+      consumes:
+      - application/json
+      description: Add members for a set
+      parameters:
+      - description: Enter key
+        in: path
+        name: key
+        type: string
+      - description: Add memebers to a set
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.Set'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Add members for a set key in redis
+      tags:
+      - KV
+  /api/v1/specification/list:
+    get:
+      consumes:
+      - application/json
+      description: Get all environment variables that need to be supplied
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+      summary: Get details of the connector specification
+      tags:
+      - specification
+  /api/v1/specification/test:
+    post:
+      consumes:
+      - application/json
+      description: Check if redis server connection is successful
+      parameters:
+      - description: Enter username, password and redis host
+        in: body
+        name: text
+        schema:
+          $ref: '#/definitions/models.Specification'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+      summary: Test if username, password and redis host url against the specification
+      tags:
+      - specification
+swagger: "2.0"

@@ -1,0 +1,656 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a Kosha REST serice for exposing many redis features as REST APIs with better consistency, observability etc",
+        "title": "Redis Connector API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "eti@cisco.io"
+        },
+        "version": "2.0"
+    },
+    "host": "localhost:8012",
+    "basePath": "/",
+    "paths": {
+        "/api/v1/hash/{key}": {
+            "get": {
+                "description": "Get Hash Elements",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Hash"
+                ],
+                "summary": "Get all hash elements in redis with an optional prefix",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Prefix",
+                        "name": "prefix",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Count",
+                        "name": "count",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add members to a hash",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Add members to a hash key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Add memebers to a hash",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Hash"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove members from a hash",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Remove members from a hash key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Remove memebers from a hash",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Hash"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/keys": {
+            "get": {
+                "description": "List all keys",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Get all keys in redis with an optional prefix",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Key Prefix",
+                        "name": "prefix",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Count",
+                        "name": "count",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/kv/{key}": {
+            "get": {
+                "description": "Get key",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Get single key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Set key value",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Set value for a key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Enter value for a key",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.KV"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove key value",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Remove a key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/list/{key}": {
+            "get": {
+                "description": "Get List elements",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "List"
+                ],
+                "summary": "Get all list elements in redis with an optional prefix",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add members for a list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "List"
+                ],
+                "summary": "Add members for a list key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Add memebers to a list",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.List"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove members from a list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "List"
+                ],
+                "summary": "Remove members from a list key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Count",
+                        "name": "count",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Remove memebers from a list",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.List"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ping": {
+            "get": {
+                "description": "Check connectivity of a redis server",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Connectivity"
+                ],
+                "summary": "Ping redis server",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/set/{key}": {
+            "get": {
+                "description": "Get Set elements",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Set"
+                ],
+                "summary": "Get all set elements in redis with an optional prefix",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Prefix",
+                        "name": "prefix",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Count",
+                        "name": "count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Sort Keys",
+                        "name": "sort",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add members for a set",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Add members for a set key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Add memebers to a set",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Set"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove members from a set",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KV"
+                ],
+                "summary": "Remove members from a set key in redis",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter key",
+                        "name": "key",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Remove memebers from a set",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Set"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/specification/list": {
+            "get": {
+                "description": "Get all environment variables that need to be supplied",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "specification"
+                ],
+                "summary": "Get details of the connector specification",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/specification/test": {
+            "post": {
+                "description": "Check if redis server connection is successful",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "specification"
+                ],
+                "summary": "Test if username, password and redis host url against the specification",
+                "parameters": [
+                    {
+                        "description": "Enter username, password and redis host",
+                        "name": "text",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.Specification"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Hash": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.KV": {
+            "type": "object",
+            "properties": {
+                "expiry": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.List": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.Set": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.Specification": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "redis_host": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

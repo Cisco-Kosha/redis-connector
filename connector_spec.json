@@ -1,0 +1,6 @@
+{
+  "USERNAME":   "Redis Username",
+  "PASSWORD":   "Redis Password",
+  "DATABASE":   "Redis Database",
+  "REDIS_HOST": "Redis Host"
+}
