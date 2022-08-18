@@ -44,16 +44,16 @@ func (c *Config) GetRedisHost() string {
 }
 
 func (c *Config) GetRedisClient() *redis.Client {
-	_, err := redis.ParseURL(fmt.Sprintf("redis://%s:%s@%s:6379/%s", c.username, "", c.redisHost, "0"))
+	opt, err := redis.ParseURL(fmt.Sprintf("redis://%s:%s@%s:6379/%d", c.username, c.password, c.redisHost, 0))
 	if err != nil {
 		panic(err)
 	}
 
-	return redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
-	})
+	//return redis.NewClient(&redis.Options{
+	//	Addr:     "localhost:6379",
+	//	Password: "", // no password set
+	//	DB:       0,  // use default DB
+	//})
 
-	// return redis.NewClient(opt)
+	return redis.NewClient(opt)
 }

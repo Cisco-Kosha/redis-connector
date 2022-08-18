@@ -17,13 +17,12 @@ It describes various API operations, related request and response structures, an
 
 To build the project binary, run
 ```
-    go build -o main .
-
+go build -o main .
 ```
 
 ## Run locally
 
-To run the project, simply provide env variables to supply the API key and Freshdesk domain name.
+To run the project, simply provide env variables to supply the username, password and redis host url. Username and password are optional
 
 
 ```bash
