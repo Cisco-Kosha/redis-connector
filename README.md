@@ -1,14 +1,15 @@
 # Kosha Redis Connector
 
-Freshdesk is a cloud-based customer support platform that was founded with the mission of enabling companies of all sizes to provide great customer service.
+Redis is an open source, in-memory data store used as a database, cache, streaming engine, and message broker.
 
-The connector APIs allow you to perform 'RESTful' operations such as reading, modifying, adding or deleting data from your helpdesk. The APIs also support Cross-Origin Resource Sharing (CORS).
+The connector APIs allow you to perform 'RESTful' operations such as reading, modifying, adding or deleting data (keys, lists, hashes, sets etc) from your redis database. 
+
+The APIs also support Cross-Origin Resource Sharing (CORS).
 
 
+![Twitter](images/redis.png)
 
-![Twitter](images/redis.jpg)
-
-This Connector API exposes REST API endpoints to perform any operations on Freshdesk v2 API in a simple, quick and intuitive fashion.
+This Connector API exposes REST API endpoints to perform any operations on Redis in a simple, quick and intuitive fashion.
 
 It describes various API operations, related request and response structures, and error codes.
 
@@ -27,12 +28,12 @@ To run the project, simply provide env variables to supply the API key and Fresh
 
 ```bash
 go build -o main .
-API_KEY=<API_KEY> DOMAIN_NAME=<DOMAIN_NAME> ./main
+USERNAME=<USERNAME> PASSWORD=<PASSWORD>  REDIS_HOST=<REDIS_HOST> ./main
 ```
 
-This will start a worker and expose the API on port `8005` on the host machine
+This will start a worker and expose the API on port `8012` on the host machine
 
-Swagger docs is available at `https://localhost:8005/docs`
+Swagger docs is available at `https://localhost:8012/docs`
 
 ## Generating Swagger Documentation
 
