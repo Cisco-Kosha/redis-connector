@@ -74,7 +74,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "KV"
+                    "Hash"
                 ],
                 "summary": "Add members to a hash key in redis",
                 "parameters": [
@@ -111,7 +111,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "KV"
+                    "Hash"
                 ],
                 "summary": "Remove members from a hash key in redis",
                 "parameters": [
@@ -424,7 +424,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Set"
+                    "Sets"
                 ],
                 "summary": "Get all set elements in redis with an optional prefix",
                 "parameters": [
@@ -474,7 +474,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "KV"
+                    "Sets"
                 ],
                 "summary": "Add members for a set key in redis",
                 "parameters": [
@@ -511,7 +511,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "KV"
+                    "Sets"
                 ],
                 "summary": "Remove members from a set key in redis",
                 "parameters": [

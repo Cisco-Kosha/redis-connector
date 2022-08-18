@@ -74,7 +74,7 @@ paths:
             type: string
       summary: Remove members from a hash key in redis
       tags:
-      - KV
+      - Hash
     get:
       consumes:
       - application/json
@@ -127,7 +127,7 @@ paths:
             type: string
       summary: Add members to a hash key in redis
       tags:
-      - KV
+      - Hash
   /api/v1/keys:
     get:
       consumes:
@@ -330,7 +330,7 @@ paths:
             type: string
       summary: Remove members from a set key in redis
       tags:
-      - KV
+      - Sets
     get:
       consumes:
       - application/json
@@ -363,7 +363,7 @@ paths:
             type: array
       summary: Get all set elements in redis with an optional prefix
       tags:
-      - Set
+      - Sets
     post:
       consumes:
       - application/json
@@ -387,7 +387,7 @@ paths:
             type: string
       summary: Add members for a set key in redis
       tags:
-      - KV
+      - Sets
   /api/v1/specification/list:
     get:
       consumes:

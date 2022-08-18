@@ -55,7 +55,7 @@ func (a *App) getAllKeys(w http.ResponseWriter, r *http.Request) {
 // getSetElements godoc
 // @Summary Get all set elements in redis with an optional prefix
 // @Description Get Set elements
-// @Tags Set
+// @Tags Sets
 // @Param key path string false "Enter key"
 // @Param prefix query string false "Key Prefix"
 // @Param count query integer false "Count"
@@ -114,7 +114,7 @@ func (a *App) getSetElements(w http.ResponseWriter, r *http.Request) {
 // addElementsToASet godoc
 // @Summary Add members for a set key in redis
 // @Description Add members for a set
-// @Tags KV
+// @Tags Sets
 // @Param key path string false "Enter key"
 // @Accept  json
 // @Produce  json
@@ -152,7 +152,7 @@ func (a *App) addElementsToASet(w http.ResponseWriter, r *http.Request) {
 // removeElementsFromASet godoc
 // @Summary Remove members from a set key in redis
 // @Description Remove members from a set
-// @Tags KV
+// @Tags Sets
 // @Param key path string false "Enter key"
 // @Accept  json
 // @Produce  json
@@ -235,7 +235,7 @@ func (a *App) getHashElements(w http.ResponseWriter, r *http.Request) {
 // addElementsToAHash godoc
 // @Summary Add members to a hash key in redis
 // @Description Add members to a hash
-// @Tags KV
+// @Tags Hash
 // @Param key path string false "Enter key"
 // @Accept  json
 // @Produce  json
@@ -273,7 +273,7 @@ func (a *App) addElementsToAHash(w http.ResponseWriter, r *http.Request) {
 // removeElementsFromAHash godoc
 // @Summary Remove members from a hash key in redis
 // @Description Remove members from a hash
-// @Tags KV
+// @Tags Hash
 // @Param key path string false "Enter key"
 // @Accept  json
 // @Produce  json
