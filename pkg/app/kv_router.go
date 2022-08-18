@@ -65,7 +65,10 @@ func (a *App) getAllKeys(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {array}   string
 // @Router /api/v1/set/{key} [get]
 func (a *App) getSetElements(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
+	
 	prefix := r.FormValue("prefix")
 	if prefix == "" {
 		prefix = "*"
@@ -122,6 +125,9 @@ func (a *App) getSetElements(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/set/{key} [post]
 func (a *App) addElementsToASet(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -160,6 +166,9 @@ func (a *App) addElementsToASet(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/set/{key} [delete]
 func (a *App) removeElementsFromASet(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -199,6 +208,9 @@ func (a *App) removeElementsFromASet(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {array}   string
 // @Router /api/v1/hash/{key} [get]
 func (a *App) getHashElements(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	prefix := r.FormValue("prefix")
 	if prefix == "" {
@@ -243,6 +255,9 @@ func (a *App) getHashElements(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/hash/{key} [post]
 func (a *App) addElementsToAHash(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -281,6 +296,9 @@ func (a *App) addElementsToAHash(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/hash/{key} [delete]
 func (a *App) removeElementsFromAHash(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -318,6 +336,9 @@ func (a *App) removeElementsFromAHash(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/kv/{key} [get]
 func (a *App) getSingleKey(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -346,6 +367,9 @@ func (a *App) getSingleKey(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/kv/{key} [post]
 func (a *App) setValueForSingleKey(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -386,6 +410,9 @@ func (a *App) setValueForSingleKey(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/kv/{key} [delete]
 func (a *App) removeSingleKey(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -412,6 +439,9 @@ func (a *App) removeSingleKey(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  boolean
 // @Router /api/v1/ping [get]
 func (a *App) ping(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	ctx := context.Background()
 	res, err := a.RedisClient.Ping(ctx).Result()
@@ -436,6 +466,9 @@ func (a *App) ping(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {array}   string
 // @Router /api/v1/list/{key} [get]
 func (a *App) getListElements(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -464,6 +497,9 @@ func (a *App) getListElements(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/list/{key} [post]
 func (a *App) addElementsToAList(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	vars := mux.Vars(r)
 	key := vars["key"]
@@ -503,6 +539,9 @@ func (a *App) addElementsToAList(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object}  string
 // @Router /api/v1/list/{key} [delete]
 func (a *App) removeElementsFromAList(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 
 	countStr := r.FormValue("count")
 
