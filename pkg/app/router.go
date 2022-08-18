@@ -28,6 +28,7 @@ func (a *App) listConnectorSpecification(w http.ResponseWriter, r *http.Request)
 		"PASSWORD":   "Redis Password",
 		"DATABASE":   "Redis Database",
 		"REDIS_HOST": "Redis Host",
+		"REDIS_PORT": "Redis Port",
 	})
 }
 
@@ -62,7 +63,7 @@ func (a *App) testConnectorSpecification(w http.ResponseWriter, r *http.Request)
 	defer r.Body.Close()
 
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     s.RedisHost,
+		Addr:     s.RedisHost + ":" + s.RedisPort,
 		Password: s.Password,
 		DB:       0, // use default DB
 		Username: s.Username,

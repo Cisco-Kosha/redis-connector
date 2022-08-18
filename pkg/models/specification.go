@@ -36,4 +36,5 @@ type Specification struct {
 	Password  string `json:"password,omitempty"`
 	Db        string `json:"database,omitempty"`
 	RedisHost string `json:"redis_host,omitempty"`
+	RedisPort string `json:"redis_port,omitempty"`
 }

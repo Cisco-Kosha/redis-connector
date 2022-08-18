@@ -12,6 +12,7 @@ type Config struct {
 	password  string
 	db        string
 	redisHost string
+	redisPort string
 }
 
 func Get() *Config {
@@ -21,6 +22,7 @@ func Get() *Config {
 	flag.StringVar(&conf.password, "password", os.Getenv("PASSWORD"), "Redis Password")
 	flag.StringVar(&conf.db, "db", os.Getenv("DATABASE"), "Redis Database")
 	flag.StringVar(&conf.redisHost, "redisHost", os.Getenv("REDIS_HOST"), "Redis Host URL")
+	flag.StringVar(&conf.redisPort, "redisPort", os.Getenv("REDIS_PORT"), "Redis Port")
 
 	flag.Parse()
 
@@ -43,8 +45,12 @@ func (c *Config) GetRedisHost() string {
 	return c.redisHost
 }
 
+func (c *Config) GetRedisPort() string {
+	return c.redisPort
+}
+
 func (c *Config) GetRedisClient() *redis.Client {
-	opt, err := redis.ParseURL(fmt.Sprintf("redis://%s:%s@%s:6379/%d", c.username, c.password, c.redisHost, 0))
+	opt, err := redis.ParseURL(fmt.Sprintf("redis://%s:%s@%s:%s/%d", c.username, c.password, c.redisHost, c.redisPort, 0))
 	if err != nil {
 		panic(err)
 	}

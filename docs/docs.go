@@ -654,6 +654,9 @@ const docTemplate = `{
                 "redis_host": {
                     "type": "string"
                 },
+                "redis_port": {
+                    "type": "string"
+                },
                 "username": {
                     "type": "string"
                 }

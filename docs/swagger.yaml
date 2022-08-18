@@ -36,6 +36,8 @@ definitions:
         type: string
       redis_host:
         type: string
+      redis_port:
+        type: string
       username:
         type: string
     type: object
