@@ -22,7 +22,10 @@ import (
 // @Success 200 {array}   string
 // @Router /api/v1/keys [get]
 func (a *App) getAllKeys(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
+	
 	prefix := r.FormValue("prefix")
 	if prefix == "" {
 		prefix = "*"
@@ -68,7 +71,7 @@ func (a *App) getSetElements(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "*")
-	
+
 	prefix := r.FormValue("prefix")
 	if prefix == "" {
 		prefix = "*"
