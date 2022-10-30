@@ -1,4 +1,4 @@
-name: ${{ github.event.repository.name }}
+name: redis-connector-ci
 
 on:
   push:
