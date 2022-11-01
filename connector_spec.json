@@ -37,7 +37,7 @@
     {
       "field": "REDIS_PORT",
       "displayName": "Redis Server Port",
-      "type": "Integer",
+      "type": "String",
       "minLength": 10,
       "maxLength": 60,
       "required": true,
