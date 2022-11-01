@@ -1,7 +1,60 @@
 {
-  "USERNAME":   "Redis Username",
-  "PASSWORD":   "Redis Password",
-  "DATABASE":   "Redis Database",
-  "REDIS_HOST": "Redis Host",
-  "REDIS_PORT": "Redis Port"
+  "version": "2.0.0",
+  "fields": [
+    {
+      "field": "USERNAME",
+      "displayName": "Redis Server Username",
+      "type": "String",
+      "minLength": 3,
+      "maxLength": 40,
+      "required": false,
+      "description": "Redis Server Username",
+      "example": "username",
+      "helpSection": "Redis DB username"
+    },
+    {
+      "field": "PASSWORD",
+      "displayName": "Redis DB Password",
+      "type": "Password",
+      "minLength": 10,
+      "maxLength": 60,
+      "required": false,
+      "description": "Redis DB Passowrd",
+      "example": "my-secret-password",
+      "helpSection": "Redis DB Password"
+    },
+    {
+      "field": "REDIS_HOST",
+      "displayName": "Redis Server Host",
+      "type": "String",
+      "minLength": 10,
+      "maxLength": 60,
+      "required": true,
+      "description": "Redis Server Host URL",
+      "example": "https://my-redis-url.com",
+      "helpSection": "Redis Host URL"
+    },
+    {
+      "field": "REDIS_PORT",
+      "displayName": "Redis Server Port",
+      "type": "Integer",
+      "minLength": 10,
+      "maxLength": 60,
+      "required": true,
+      "description": "Redis Server Port",
+      "example": "6379",
+      "helpSection": "Redis Server port number"
+    },
+    {
+      "field": "DATABASE",
+      "displayName": "Redis DB Name",
+      "type": "String",
+      "minLength": 10,
+      "maxLength": 60,
+      "required": false,
+      "description": "Redis DB Name",
+      "example": "0",
+      "helpSection": "Redis DB name"
+    }
+  ]
 }
