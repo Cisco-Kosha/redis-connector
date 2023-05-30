@@ -1,51 +1,47 @@
 # Kosha Redis Connector
 
-Redis is an open source, in-memory data store used as a database, cache, streaming engine, and message broker.
+Redis is an open-source, in-memory data structure store that you can use as a high-performance caching and storage solution so that your applications can quickly and efficiently retrieve data.
 
-The connector APIs allow you to perform 'RESTful' operations such as reading, modifying, adding or deleting data (keys, lists, hashes, sets etc) from your redis database. 
+The Kosha Redis connector enables you to perform REST API operations from the Redis API in your Kosha workflow or custom application. Using the Redis connector, you can directly access the Redis platform to:
 
-The APIs also support Cross-Origin Resource Sharing (CORS).
+* Add members to a hash key
+* Set the value for a key
+* Ping the Redis server
 
+## Useful Actions
 
-![Twitter](images/redis.png)
+You can use the Kosha Redis connector to manage hashes, key/value pairs, lists, and sets.
 
-This Connector API exposes REST API endpoints to perform any operations on Redis in a simple, quick and intuitive fashion.
+Refer to the Kosha Redis connector [API specification](openapi.json) for details.
 
-It describes various API operations, related request and response structures, and error codes.
+### Hashes
 
-## Build
+Use the hash API to add or remove members from a hash key.
 
-To build the project binary, run
-```
-go build -o main .
-```
+### Key/Value Pairs
 
-## Run locally
+Use the k/v API to set values for keys or to remove keys.
 
-To run the project, simply provide env variables to supply the username, password and redis host url. Username and password are optional
+### Lists
 
+Use the list API to add or remove members from a list.
 
-```bash
-go build -o main .
-USERNAME=<USERNAME> PASSWORD=<PASSWORD>  REDIS_HOST=<REDIS_HOST> ./main
-```
+### Sets
 
-This will start a worker and expose the API on port `8012` on the host machine
+Use the set API to add or remove members from a set.
 
-Swagger docs is available at `https://localhost:8012/docs`
+## Authentication
 
-## Generating Swagger Documentation
+To authenticate when provisioning the Kosha Redis connector, you need your:
 
-To generate `swagger.json` and `swagger.yaml` files based on the API documentation, simple run -
+* Redis server username
+* Redis server host
+* Redis server port
+* Redis DB name
+* Redis DB password
 
-```bash
-go install github.com/swaggo/swag/cmd/swag@latest
-swag init -g main.go --parseDependency --parseInternal
-```
+## Kosha Connector Open Source Development
 
-To generate OpenAPISpec version 3 from Swagger 2.0 specification, run -
+All connectors Kosha shares on the marketplace are open source. We believe in fostering collaboration and open development. Everyone is welcome to contribute their ideas, improvements, and feedback for any Kosha connector. We encourage community engagement and appreciate any contributions that align with our goals of an open and collaborative API management platform.
 
-```bash
-npm i api-spec-converter
-npx api-spec-converter --from=swagger_2 --to=openapi_3 --syntax=json ./docs/swagger.json > openapi.json
-```
+Refer to the contribution guidelines for details.
